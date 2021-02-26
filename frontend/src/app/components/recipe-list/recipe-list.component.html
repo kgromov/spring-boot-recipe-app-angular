@@ -1,0 +1,22 @@
+<div class="table-responsive">
+  <table class="table table-hover ">
+    <thead class="thead-inverse">
+    <tr>
+      <th>Description</th>
+      <th>View</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let recipe of recipes">
+      <td>"{{recipe.description}}"</td>
+      <td><a href="View">{{view(recipe)}}</a></td>
+      <td><button title="Update user"
+                  (click)="update(recipe)">Update</button></td>
+      <td><button class="delete" title="Delete user"
+                   (click)="delete(recipe.id)">x</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
