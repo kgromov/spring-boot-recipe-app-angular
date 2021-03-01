@@ -2,6 +2,7 @@ package com.recipe.app.controllers;
 
 import com.recipe.app.dtos.RecipeDto;
 import com.recipe.app.services.RecipeService;
+import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ public class RecipeController {
     private final RecipeService recipeService;
 
     @GetMapping()
+    @Timed(value = "all_recipes", longTask = true)
     public List<RecipeDto> getRecipes() {
         return recipeService.getRecipes().stream()
                 .map(RecipeDto::new)
